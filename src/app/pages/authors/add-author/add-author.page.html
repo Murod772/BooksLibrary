@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Add New Author</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input label="Author Name" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Biography" formControlName="biography"></ion-input>
+    </ion-item>
+
+
+
+    <ion-button expand="block" type="submit" [disabled]="!authorForm.valid">Add Author</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Authors</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/authors/add-author">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let author of authors">
+      <ion-label (click)="navigateToAuthorDetail(author.id)">
+        <h2>{{ author.name }}</h2>
+        <p>Biography: {{ author.biography }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="editAuthor(author.id)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

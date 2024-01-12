@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Books</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/books/add-book">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <!-- Filter Form -->
+    <form [formGroup]="filterForm">
+      <ion-item>
+        <ion-input label="Search" formControlName="search"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Authors" formControlName="authors" multiple="true" placeholder="Select Authors">
+          <ion-select-option *ngFor="let author of authors" [value]="author.id">{{ author.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Languages" formControlName="languages" multiple="true" placeholder="Select Language">
+          <ion-select-option *ngFor="let language of languages" [value]="language">{{ language }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Pages from" formControlName="pagesFrom" type="number" placeholder="Min Pages"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Pages to" formControlName="pagesTo" type="number" placeholder="Max Pages"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-select label="Genres" formControlName="genres" multiple="true" placeholder="Select Genre">
+          <ion-select-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+
+    </form>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!-- Books List -->
+  <ion-list>
+    <ion-item *ngFor="let book of filteredBooks" [routerLink]="[book.id]">
+      <ion-label>
+        <h2>{{ book.title }}</h2>
+        <p>Author: {{ book.author }}</p>
+        <p>Pages: {{ book.pages }}</p>
+        <p>Language: {{ book.language }}</p>
+        <p>Genre: {{ book.genre }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/authors"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ author.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="author">
+    <ion-card-header>
+      <ion-card-title>{{ author.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Biography: {{ author.biography }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

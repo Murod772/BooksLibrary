@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit Author</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/authors"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="editForm" (ngSubmit)="saveAuthor()">
+    <ion-item>
+
+      <ion-input label="Name" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Biography" formControlName="biography"></ion-textarea>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="!editForm.valid">Save Author</ion-button>
+  </form>
+</ion-content>
