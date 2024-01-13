@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService, Author } from 'src/app/services/data.service';
+import { Component } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './author-edit.page.html',
   styleUrls: ['./author-edit.page.scss'],
 })
-export class AuthorEditPage implements OnInit {
+export class AuthorEditPage{
   editForm: FormGroup;
   authorId: number = 0;
 
@@ -24,7 +24,7 @@ export class AuthorEditPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.authorId = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.loadAuthorData();
   }

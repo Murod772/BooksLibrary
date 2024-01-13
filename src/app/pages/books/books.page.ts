@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component} from '@angular/core';
 import { DataService, Book, Author  } from '../../services/data.service';
 import { RefresherCustomEvent } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 
 
-export class BooksPage implements OnInit, OnDestroy {
+export class BooksPage {
   public books: Book[] = [];
   public filteredBooks: Book[] = [];
   private bookAddedSubscription: Subscription;
@@ -26,10 +26,11 @@ export class BooksPage implements OnInit, OnDestroy {
     this.filterForm = this.formBuilder.group({
       search: [''],
       authors: [[]],
+      description: [''],
       languages: [[]],
       pagesFrom: [''],
       pagesTo: [''],
-      genres: ['']
+      genres: [[]]
     });
 
     this.filterForm.valueChanges.subscribe(() => {
@@ -37,8 +38,9 @@ export class BooksPage implements OnInit, OnDestroy {
     });
   }
 
-  async ngOnInit() {
+  async ionViewWillEnter() {
     this.authors = await this.dataService.getAuthors(); // Load authors
+    console.log(this.authors);
     this.refreshBooks();
 
     this.bookAddedSubscription = this.dataService.bookAdded$.subscribe(() => {
@@ -46,7 +48,7 @@ export class BooksPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ionViewWillLeave() {
     this.bookAddedSubscription.unsubscribe();
   }
 
@@ -56,6 +58,7 @@ export class BooksPage implements OnInit, OnDestroy {
 
     this.filteredBooks = books.filter(book =>
       (filters.search ? book.title.toLowerCase().includes(filters.search.toLowerCase()) : true) &&
+      (filters.description ? book.description.toLowerCase().includes(filters.description.toLowerCase()) : true) &&
       (filters.authors.length > 0 ? filters.authors.includes(book.author) : true) &&
       (filters.languages.length > 0 ? filters.languages.includes(book.language) : true) &&
       (filters.pagesFrom ? book.pages >= filters.pagesFrom : true) &&

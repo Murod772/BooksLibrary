@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService, Book } from 'src/app/services/data.service';
 @Component({
@@ -6,20 +6,19 @@ import { DataService, Book } from 'src/app/services/data.service';
   templateUrl: './book-details.page.html',
   styleUrls: ['./book-details.page.scss'],
 })
-export class BookDetailsPage implements OnInit {
+export class BookDetailsPage{
   bookId: number;
   book: Book;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {
     this.bookId = 0; // initialize bookId with a default value
-    this.book = {} as Book; // initialize book with an empty object
+    this.book = { author: { name: '' } } as Book; // initialize book with an empty object
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
 
     this.bookId = +this.route.snapshot.paramMap.get('id')!;
     this.fetchBookDetails(this.bookId);
-    console.log(this.book);
   }
 
    private async fetchBookDetails(id: number): Promise<void> {

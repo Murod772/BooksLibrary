@@ -4,7 +4,10 @@ import { Subject } from 'rxjs';
 
 export interface Book {
   title: string;
-  author: string;
+  author: {
+    name: string,
+  }
+  description: string;
   pages: number;
   language: string;
   genre: string;
@@ -58,7 +61,13 @@ export class DataService {
     return books[id];
   }
 
-  async addBook(newBook: Book): Promise<void> {
+  async addBook(newBook: Book, authorId: number): Promise<void> {
+    const authors = await this.getAuthors();
+    const author = authors.find(author => author.id === authorId);
+    if (!author) {
+      throw new Error('Author not found');
+    }
+    newBook.author = { name: author.name,}; 
     const books = await this.getBooks();
     const newId =
       books.length > 0 ? Math.max(...books.map((book) => book.id)) + 1 : 0;
@@ -100,5 +109,4 @@ export class DataService {
     }
   }
 
-  // Add other methods as needed (update, delete, etc.)
 }

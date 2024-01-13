@@ -13,7 +13,11 @@
     <!-- Filter Form -->
     <form [formGroup]="filterForm">
       <ion-item>
-        <ion-input label="Search" formControlName="search"></ion-input>
+        <ion-input label="Search Title" formControlName="search"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Description" formControlName="description"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -54,7 +58,7 @@
     <ion-item *ngFor="let book of filteredBooks" [routerLink]="[book.id]">
       <ion-label>
         <h2>{{ book.title }}</h2>
-        <p>Author: {{ book.author }}</p>
+        <p>Author: {{ book.author.name }}</p>
         <p>Pages: {{ book.pages }}</p>
         <p>Language: {{ book.language }}</p>
         <p>Genre: {{ book.genre }}</p>

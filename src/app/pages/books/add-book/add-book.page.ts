@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService, Author } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-book.page.html',
   styleUrls: ['./add-book.page.scss'],
 })
-export class AddBookPage implements OnInit {
+export class AddBookPage{
   bookForm: FormGroup;
   authors: Author[] = [];
 
@@ -17,19 +17,20 @@ export class AddBookPage implements OnInit {
     this.bookForm = this.formBuilder.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
+      description: ['', Validators.required],
       pages: ['', Validators.required],
-      language: [''],
-      genre: ['']
+      language: ['', Validators.required],
+      genre: ['', Validators.required]
     });
   }
 
-  async ngOnInit() {
+  async ionViewWillEnter() {
     this.authors = await this.dataService.getAuthors();
   }
   onSubmit() {
     if (this.bookForm.valid) {
-      this.dataService.addBook(this.bookForm.value);
-      // additional logic after submission like resetting the form or navigation
+      this.dataService.addBook(this.bookForm.value, this.bookForm.value.author);
+
       this.bookForm.reset();
       this.router.navigate(['/books']); // navigate to books page
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService, Author } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-author.page.html',
   styleUrls: ['./add-author.page.scss'],
 })
-export class AddAuthorPage implements OnInit {
+export class AddAuthorPage{
 
   authorForm: FormGroup;
   authors: Author[] = [];
@@ -20,7 +20,7 @@ export class AddAuthorPage implements OnInit {
     });
   }
 
-  async ngOnInit() {
+  async ionViewWillEnter() {
     this.authors = await this.dataService.getAuthors();
   }
   onSubmit() {

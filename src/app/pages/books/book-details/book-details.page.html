@@ -12,14 +12,14 @@
   <ion-card *ngIf="book">
     <ion-card-header>
       <ion-card-title>{{ book.title }}</ion-card-title>
-      <ion-card-subtitle>Author: {{ book.author }}</ion-card-subtitle>
+      <ion-card-subtitle>Author: {{ book.author.name }}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
       <p>Pages: {{ book.pages }}</p>
       <p>Language: {{ book.language }}</p>
       <p>Genre: {{ book.genre }}</p>
-      <!-- Add more details as needed -->
+      <p>Description: {{ book.description }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

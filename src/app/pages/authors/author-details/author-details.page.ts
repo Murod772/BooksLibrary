@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService, Author } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './author-details.page.html',
   styleUrls: ['./author-details.page.scss'],
 })
-export class AuthorDetailsPage implements OnInit {
+export class AuthorDetailsPage{
   authorId: number;
   author: Author;
   constructor(private route: ActivatedRoute, private dataService: DataService) {
@@ -15,7 +15,7 @@ export class AuthorDetailsPage implements OnInit {
     this.author = {} as Author; // initialize book with an empty object
    }
 
-  ngOnInit() {
+   ionViewWillEnter() {
 
     this.authorId = +this.route.snapshot.paramMap.get('id')!;
     this.fetchAuthorDetails(this.authorId);

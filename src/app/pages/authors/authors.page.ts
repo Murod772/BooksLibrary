@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService, Author } from '../../services/data.service';
 import { RefresherCustomEvent } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './authors.page.html',
   styleUrls: ['./authors.page.scss'],
 })
-export class AuthorsPage implements OnInit, OnDestroy {
+export class AuthorsPage{
   public authors: Author[] = [];
   private authorAddedSubscription: Subscription;
 
@@ -23,17 +23,17 @@ export class AuthorsPage implements OnInit, OnDestroy {
     this.router.navigate([`/authors/edit/${authorId}`]);  // Adjust the route as per your app's routes
   }
 
-  
+
   navigateToAuthorDetail(authorId: number) {
     this.router.navigate([`/authors/${authorId}`]);  // Navigate to author detail
   }
-  async ngOnInit() {
+  async ionViewWillEnter() {
     this.refreshAuthors();
     this.authorAddedSubscription = this.dataService.authorAdded$.subscribe(() => {
       this.refreshAuthors();
     });
   }
-  ngOnDestroy() {
+  ionViewWillLeave() {
     this.authorAddedSubscription.unsubscribe();
   }
 
