@@ -173,7 +173,7 @@
       },
       {
         "file": "src/app/pages/authors/add-author/add-author.page.ts",
-        "hash": "3654791929283810409"
+        "hash": "2075408843047481379"
       },
       {
         "file": "src/app/pages/authors/author-details/author-details-routing.module.ts",
@@ -197,7 +197,7 @@
       },
       {
         "file": "src/app/pages/authors/author-details/author-details.page.ts",
-        "hash": "13255345664029099075"
+        "hash": "13184473180690011342"
       },
       {
         "file": "src/app/pages/authors/author-edit/author-edit-routing.module.ts",
@@ -221,7 +221,7 @@
       },
       {
         "file": "src/app/pages/authors/author-edit/author-edit.page.ts",
-        "hash": "1437144577385137435"
+        "hash": "11360435190797432700"
       },
       {
         "file": "src/app/pages/authors/authors-routing.module.ts",
@@ -245,7 +245,7 @@
       },
       {
         "file": "src/app/pages/authors/authors.page.ts",
-        "hash": "15305658745656628459"
+        "hash": "10644658206578744923"
       },
       {
         "file": "src/app/pages/books/add-book/add-book-routing.module.ts",
@@ -257,7 +257,7 @@
       },
       {
         "file": "src/app/pages/books/add-book/add-book.page.html",
-        "hash": "763001701899894764"
+        "hash": "10621862973994674341"
       },
       {
         "file": "src/app/pages/books/add-book/add-book.page.scss",
@@ -269,7 +269,7 @@
       },
       {
         "file": "src/app/pages/books/add-book/add-book.page.ts",
-        "hash": "7895114113980090124"
+        "hash": "9817759749891888766"
       },
       {
         "file": "src/app/pages/books/book-details/book-details-routing.module.ts",
@@ -281,7 +281,7 @@
       },
       {
         "file": "src/app/pages/books/book-details/book-details.page.html",
-        "hash": "12702428456380913165"
+        "hash": "10632542853321647739"
       },
       {
         "file": "src/app/pages/books/book-details/book-details.page.scss",
@@ -293,7 +293,7 @@
       },
       {
         "file": "src/app/pages/books/book-details/book-details.page.ts",
-        "hash": "9761747578273370133"
+        "hash": "4083399805352904343"
       },
       {
         "file": "src/app/pages/books/books-routing.module.ts",
@@ -305,7 +305,7 @@
       },
       {
         "file": "src/app/pages/books/books.page.html",
-        "hash": "1707637778833075193"
+        "hash": "14687863350923409696"
       },
       {
         "file": "src/app/pages/books/books.page.scss",
@@ -317,7 +317,7 @@
       },
       {
         "file": "src/app/pages/books/books.page.ts",
-        "hash": "238980703026886212"
+        "hash": "17791494240515626533"
       },
       {
         "file": "src/app/services/data.service.spec.ts",
@@ -325,7 +325,7 @@
       },
       {
         "file": "src/app/services/data.service.ts",
-        "hash": "255627831028158006"
+        "hash": "4508807739178054739"
       },
       {
         "file": "src/assets/icon/favicon.png",

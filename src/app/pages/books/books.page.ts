@@ -57,8 +57,7 @@ export class BooksPage {
     const filters = this.filterForm.value;
 
     this.filteredBooks = books.filter(book =>
-      (filters.search ? book.title.toLowerCase().includes(filters.search.toLowerCase()) : true) &&
-      (filters.description ? book.description.toLowerCase().includes(filters.description.toLowerCase()) : true) &&
+      (filters.search ? (book.title.toLowerCase() + ' ' + book.description.toLowerCase()).includes(filters.search.toLowerCase()) : true) &&
       (filters.authors.length > 0 ? filters.authors.includes(book.author) : true) &&
       (filters.languages.length > 0 ? filters.languages.includes(book.language) : true) &&
       (filters.pagesFrom ? book.pages >= filters.pagesFrom : true) &&
